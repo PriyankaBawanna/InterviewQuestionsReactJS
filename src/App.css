@@ -1,0 +1,83 @@
+/* Calculator.css */
+
+/* Basic styling for calculator */
+.calculator {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+  width: 320px;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: white;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.input {
+  width: 100%;
+  padding: 15px;
+  font-size: 2rem;
+  text-align: right;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+}
+
+.calculator-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.numbers {
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.operators {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  gap: 10px;
+}
+
+button {
+  font-size: 1.5rem;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #f4f4f4;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #e0e0e0;
+}
+
+button:active {
+  background-color: #ddd;
+}
+
+button:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* Special styling for 'clear' and 'equals' buttons */
+button:focus,
+button.clear,
+button.operator {
+  background-color: #007bff;
+  color: white;
+}
+
+button.clear {
+  background-color: red;
+}
+
+button.operator {
+  background-color: orange;
+}
