@@ -34,8 +34,8 @@ const Calculator = () => {
   return (
     <div className="calculator">
       <div className="display">
-        <div className="input">{input}</div>
-        {result !== null && <div className="result">= {result}</div>}
+        <div className="input">{result ? result:input}</div>
+   
       </div>
       <div className="buttons">
         <button className="btn" onClick={() => handleClick('1')}>1</button>
@@ -68,7 +68,7 @@ const Calculator = () => {
 
 
 const App =()=>{
-  return<>APP
+  return<> Calculator
 <Calculator />
   </>
 }
