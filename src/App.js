@@ -6,15 +6,9 @@ function Calculator() {
 
   // Handle button clicks for numbers and operators
   const handleClick = (value) => {
-    setInput((prevInput) => prevInput + value);
+    setInput(input + value);
   };
 
-  // Handle clear button
-  const handleClear = () => {
-    setInput("");
-  };
-
-  // Handle evaluation of the expression
   const handleEvaluate = () => {
     // Check if the input is empty or ends with an operator
     if (input.trim() === "" || /[+\-*/]$/.test(input)) {
@@ -33,8 +27,17 @@ function Calculator() {
         setInput(result.toString());
       }
     } catch (error) {
-      setInput("Error");
+      setResult("Error");
     }
+  };
+
+  const handleClear = () => {
+    setInput("");
+    setResult(null);
+  };
+
+  const handleBackspace = () => {
+    setInput(input.slice(0, -1));
   };
 
   return (
@@ -69,12 +72,13 @@ function Calculator() {
   );
 }
 
-function App() {
+const App = () => {
   return (
-    <div>
+    <>
+      {" "}
+      Calculator
       <Calculator />
-    </div>
+    </>
   );
-}
-
+};
 export default App;
