@@ -28,7 +28,7 @@ function Calculator() {
 
     try {
       // If there's no operator, it's an invalid expression, show "Error"
-      if (!/[0-9]/.test(input) || !/[+\-*/]/.test(input)) {
+      if (!/[+\-*/]/.test(input)) {
         setInput("Error");
         return;
       }

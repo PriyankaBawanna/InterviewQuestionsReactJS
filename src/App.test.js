@@ -1,5 +1,6 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
+import Calculator from "./App";
 
 describe("React Calculator Tests", () => {
   // Rendering and Layout Test
