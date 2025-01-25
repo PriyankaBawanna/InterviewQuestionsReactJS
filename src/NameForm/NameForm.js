@@ -39,6 +39,8 @@ describe('NameForm Component', () => {
 
   // Test Case 4: Form Submission Tests (No Page Reload)
   test('prevents page reload on form submission', () => {
+
+    
     // Create a mock function for preventDefault
     const mockPreventDefault = jest.fn();
     
