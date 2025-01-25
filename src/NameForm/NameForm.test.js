@@ -39,13 +39,22 @@ describe('NameForm Component', () => {
 
   // Test Case 4: Form Submission Tests (No Page Reload)
   test('prevents page reload on form submission', () => {
+    // Create a mock function for preventDefault
+    const mockPreventDefault = jest.fn();
+    
+    // Render the component
     render(<NameForm />);
+    
+    // Get the form element
     const form = screen.getByTestId('name-form');
-    const handleSubmit = jest.fn(e => e.preventDefault());
-    form.onsubmit = handleSubmit;
-
-    fireEvent.submit(form);
-    expect(handleSubmit).toHaveBeenCalled();
+    
+    // Simulate form submission with mock event
+    const submitEvent = new Event('submit', { bubbles: true });
+    submitEvent.preventDefault = mockPreventDefault;
+    fireEvent(form, submitEvent);
+  
+    // Verify preventDefault was called
+    expect(mockPreventDefault).toHaveBeenCalled();
   });
 
   // Test Case 5: Edge Case Tests (One field empty)
