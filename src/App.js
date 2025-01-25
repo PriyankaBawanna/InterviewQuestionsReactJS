@@ -1,75 +1,50 @@
 import React, { useState } from 'react';
 
-const Calculator = () => {
+const App = () => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [fullName, setFullName] = useState('');
 
-  const [input, setInput] = useState('');
-  const [result, setResult] = useState(null);
-
-
-  const handleClick = (value) => {
-    setInput(input + value);
-  };
-
-
-  const handleEvaluate = () => {
-    try {
-
-      const evaluatedResult = eval(input);
-      setResult(evaluatedResult);
-    } catch (error) {
-      setResult('Error');
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (firstName && lastName) {
+      setFullName(`${firstName} ${lastName}`);
+    } else {
+      setFullName('');
     }
   };
 
-  const handleClear = () => {
-    setInput('');
-    setResult(null);
-  };
-
-
-  const handleBackspace = () => {
-    setInput(input.slice(0, -1));
-  };
-
   return (
-    <div className="calculator">
-      <div className="display">
-        <div className="input">{result ? result:input}</div>
-   
-      </div>
-      <div className="buttons">
-        <button className="btn" onClick={() => handleClick('1')}>1</button>
-        <button className="btn" onClick={() => handleClick('2')}>2</button>
-        <button className="btn" onClick={() => handleClick('3')}>3</button>
-
-        <button className="btn" onClick={() => handleClick('4')}>4</button>
-        <button className="btn" onClick={() => handleClick('5')}>5</button>
-        <button className="btn" onClick={() => handleClick('6')}>6</button>
-      
-        <button className="btn" onClick={() => handleClick('7')}>7</button>
-        <button  className="btn" onClick={() => handleClick('8')}>8</button>
-        <button  className="btn" nonClick={() => handleClick('9')}>9</button>
-
-        <button className="btn" onClick={() => handleClick('*')}>*</button>
-
-        <button  className="btn" onClick={() => handleClick('0')}>0</button>
-        <button  className="btn" onClick={handleClear}>C</button>
-        <button className="btn" onClick={handleBackspace}>←</button>
-        <button className="btn" onClick={() => handleClick('/')}>/</button>
-        <button className="btn"onClick={() => handleClick('+')}>+</button>
-        
-        <button className="btn" onClick={() => handleClick('-')}>-</button>
-        <button className="btn" onClick={handleEvaluate}>=</button>
-
-      </div>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>First Name</label>
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            data-testid="first-name-input"
+          />
+        </div>
+        <div>
+          <label>Last Name</label>
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            data-testid="last-name-input"
+          />
+        </div>
+        <button type="submit" data-testid="submit-button">Submit</button>
+      </form>
+      {fullName && <h2>Full Name: {fullName}</h2>}
     </div>
   );
 };
 
 
-const App =()=>{
-  return<> Calculator
-<Calculator />
-  </>
-}
+
+
+
+
 export default App;
